@@ -1,9 +1,10 @@
 import {Component} from 'react'
 import {nanoid} from 'nanoid'
 import editIcon from '../assets/edit.svg'
+import printerIcon from '../assets/icons8-print-30.png'
+import '../styles/cv.css'
 
 class Cv extends Component {
-  
   render() {
     const educationArray = Object.keys(this.props.info.education).map(key => {
       return this.props.info.education[key]
@@ -31,12 +32,14 @@ class Cv extends Component {
       </div>
       )
     }) 
+
     return (
       <div className='cv-page'>
         <div className='edit-div'>
           <img src={editIcon} alt="edit" onClick={this.props.editCv}/>
+          <img src={printerIcon} alt="edit" onClick={() => window.print()}/>
         </div>
-        <div className='cv'>
+        <div className='cv' id='section-to-print'>
           <div className='head'>
             <div className='head-pic'>
               <img src={this.props.info.general.null.picture ? this.props.info.general.null.picture : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'} alt="user" />

@@ -3,7 +3,6 @@ import GeneralInfo from './components/GeneralInfo'
 import Education from './components/Education'
 import WorkExperience from './components/WorkExperience'
 import Cv from './components/Cv'
-
 import './App.css'
 
 class App extends Component {
