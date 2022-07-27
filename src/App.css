@@ -50,6 +50,20 @@
   padding: 0 20px;
 }
 
+.reset-div {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  padding: 0 50px;
+}
+
+.reset-div img {
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+  cursor: pointer;
+}
+
 .form {
   max-width: 1000px;
   margin: 0 auto;

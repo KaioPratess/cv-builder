@@ -4,6 +4,7 @@ import GeneralInfo from './components/GeneralInfo'
 import Education from './components/Education'
 import WorkExperience from './components/WorkExperience'
 import Cv from './components/Cv'
+import resetIcon from './assets/icons8-reset-64.png'
 import './App.css'
 
 class App extends Component {
@@ -16,6 +17,22 @@ class App extends Component {
     },
     education: [],
     work: []
+  }
+
+  reset = (event) => {
+    this.setState(prevState => {
+      return {
+        form: {
+          general: {},
+          education: {},
+          work: {}
+        },
+        education: [],
+        work: []
+      }
+    })
+    localStorage.removeItem('info')
+    window.location.reload()
   }
 
   editCv = () => {
@@ -235,6 +252,7 @@ class App extends Component {
     return (
       <div className="app">
         <header className='header'>CV BUILDER</header>
+        {!this.state.preview && <div className='reset-div'><img src={resetIcon} onClick={this.reset}/></div>}
         <div className='main-content'>
           {this.state.preview && <Cv info={this.state.form} editCv={this.editCv}/>}
           {!this.state.preview && <form className='form' onSubmit={this.onSubmit}>
