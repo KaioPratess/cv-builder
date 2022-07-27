@@ -25,6 +25,7 @@ class Cv extends Component {
     })
 
     const employmentHistory = workArray.map(item => {
+      if(item !== undefined) {
         return (
           <div key={nanoid}>
             <h3>{item.position} at {item.company}</h3>
@@ -32,6 +33,8 @@ class Cv extends Component {
             <p>{item['main-tasks']}</p>
         </div>
         )
+      }
+  
     }) 
 
     return (
