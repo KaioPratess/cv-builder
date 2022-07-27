@@ -3,27 +3,12 @@ import {nanoid} from 'nanoid'
 import binIcon from '../assets/bin.svg'
 
 class WorkExperience extends Component {
-  state = {
-    works: [],
-  }
-
-  setCurrent = (event) => {
-    const toDate = document.querySelector('#to-date');
-    if(event.target.checked) {
-      toDate.setAttribute('disabled', 'disabled')
-      toDate.setAttribute('type', 'text')
-      toDate.value = 'Current Position'
-    } else {
-      toDate.setAttribute('type', 'date')
-      toDate.removeAttribute('disabled')
-    }
-  }
 
   addWork = () => {
     const nano = nanoid();
     const template =  <div className='work-template' key={nano} data-key={nano}>
     <div className="icon-container">
-      <img src={binIcon} alt="delete" id={nano} onClick={this.deleteWork}/>
+      <img src={binIcon} alt="delete" id={nano} onClick={this.props.delete}/>
     </div>
     <div className='company'>
       <label htmlFor="company">Company Name *</label>
@@ -43,7 +28,7 @@ class WorkExperience extends Component {
     </div>
     <div className='current-position'>
       <label htmlFor="current-position">Current Position</label>
-      <input type="checkbox" name='current-position' id='current-position' data-section='work' onChange={this.setCurrent}/>
+      <input type="checkbox" name='current-position' id='current-position' data-section='work' onChange={this.props.setCurrent}/>
     </div>
     <div className='main-tasks'>
       <label htmlFor="main-tasks">Main Tasks *</label>
@@ -51,33 +36,14 @@ class WorkExperience extends Component {
     </div>
   </div>;
 
-  this.setState(prevState => {
-    return {
-      works: [...prevState.works, template]
-    }
-  })
+    this.props.setWork(template)
   }
-
-  deleteWork = (event) => {
-    const id = event.target.getAttribute('id')
-    const newArray = [];
-    this.state.works.forEach(template => {
-      if (template.key !== id) {
-        newArray.push(template)
-      }
-    })
-    this.setState(prevState => {
-      return {
-        works: newArray
-      }
-    })
-  }
-
+  
   render() {
     return (
       <div className='work-experience'>
         <h2>Work Experience</h2>
-        {this.state.works}
+        {this.props.work}
         <button type="button" className="add-btn" onClick={this.addWork}>+ Add Experience</button>
       </div>
     )

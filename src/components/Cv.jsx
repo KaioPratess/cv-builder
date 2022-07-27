@@ -2,7 +2,6 @@ import {Component} from 'react'
 import {nanoid} from 'nanoid'
 import editIcon from '../assets/edit.svg'
 import printerIcon from '../assets/icons8-print-30.png'
-import '../styles/cv.css'
 
 class Cv extends Component {
   render() {
@@ -11,12 +10,14 @@ class Cv extends Component {
     })
 
     const education = educationArray.map(item => {
-      return (
-        <div key={nanoid}>
-          <h3>{`${item.title} at ${item.school}`}</h3>
-          <span>{item.date}</span>
-      </div>
-      )
+      if(item !== undefined) {
+        return (
+          <div key={nanoid}>
+            <h3>{`${item.title} at ${item.school}`}</h3>
+            <span>{item.date}</span>
+        </div>
+        )
+      }
     })
 
     const workArray = Object.keys(this.props.info.work).map(key => {
@@ -24,13 +25,13 @@ class Cv extends Component {
     })
 
     const employmentHistory = workArray.map(item => {
-      return (
-        <div key={nanoid}>
-          <h3>{item.position} at {item.company}</h3>
-          <span>{`${item['from-date']} - ${item['to-date'] ? item['to-date'] : 'Current Position'}`}</span>
-          <p>{item['main-tasks']}</p>
-      </div>
-      )
+        return (
+          <div key={nanoid}>
+            <h3>{item.position} at {item.company}</h3>
+            <span>{`${item['from-date']} - ${item['to-date'] ? item['to-date'] : 'Current Position'}`}</span>
+            <p>{item['main-tasks']}</p>
+        </div>
+        )
     }) 
 
     return (
