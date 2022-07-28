@@ -1,4 +1,5 @@
-<h1><a href=''>CV Builder</a></h1>
+<h1><a href='https://kaiopratess.github.io/cv-builder/
+'>CV Builder</a></h1>
 
 <h2>What is this project about</h2>
  <p>This is a curriculum vitae creator. Fill in the form and print your new CV!</p>
